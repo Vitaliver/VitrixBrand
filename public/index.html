@@ -12,48 +12,74 @@
   <!-- Шум (фіолетовий гранж) -->
   <div class="noise-overlay"></div>
 
-  <!-- ХЕДЕР -->
-  <header class="header">
-    <div class="container header__inner">
-      <div class="logo">VITRIX</div>
-      <nav class="nav">
-        <a href="#about" class="nav__link">Про мене</a>
-        <a href="#products" class="nav__link">Продукти</a>
-        <a href="#reviews" class="nav__link">Відгуки</a>
-      </nav>
-    </div>
-  </header>
+ <!-- ХЕДЕР -->
+<header class="header">
+  <div class="container header__inner">
+    <div class="logo">VITRIX</div>
+    <nav class="nav">
+      <a href="#about" class="nav__link">
+        <span class="nav__link-icon">✦</span>
+        <span class="nav__link-text">Про мене</span>
+      </a>
+      <a href="#products" class="nav__link">
+        <span class="nav__link-icon">◆</span>
+        <span class="nav__link-text">Продукти</span>
+      </a>
+      <a href="#reviews" class="nav__link">
+        <span class="nav__link-icon">◈</span>
+        <span class="nav__link-text">Відгуки</span>
+      </a>
+      <a href="#terms" class="nav__link">
+        <span class="nav__link-icon">◉</span>
+        <span class="nav__link-text">Умови</span>
+      </a>
+    </nav>
+  </div>
+</header>
 
   <main>
-    <!-- БЛОК 1: ПРО МЕНЕ -->
-    <section id="about" class="section about">
-      <div class="container about__inner">
-        <div class="about__image">
-          <!-- Замініть src на своє фото або використовуйте іконку -->
-          <img src="img/about.jpg" alt="Засновник VITRIX" onerror="this.style.display='none'">
-          <!-- Якщо фото немає, буде сірий фон – можна додати емодзі як fallback -->
-        </div>
-        <div class="about__content">
-          <h2 class="section-title">Привіт, я <span class="highlight">Засновник</span></h2>
-          <p class="about__text">
-            Мене звати <strong>Артем</strong>, і я створив <strong>VITRIX</strong> – систему інфопродуктів, які змінюють підхід до планування, звичок та відновлення.
-          </p>
-          <p class="about__text">
-            Моя місія – допомогти тобі прибрати хаос у голові, почати діяти і повернути контроль над своїм життям.
-          </p>
-        </div>
+  <!-- БЛОК 1: ПРО МЕНЕ -->
+<section id="about" class="section about">
+  <div class="container about__inner">
+    <div class="about__image">
+      <div class="about__logo-wrapper">
+        <!-- ВСТАВЛЯЄМО ЛОГОТИП -->
+        <img src="img/about.png" alt="VITRIX" class="about__logo">
+        <!-- Якщо логотип SVG – ще краще -->
       </div>
-    </section>
+    </div>
+    <div class="about__content">
+      <h2 class="section-title">Привіт, я <span class="highlight">Віталій</span></h2>
+      <p class="about__text">
+        Я засновник <strong>VITRIX</strong>. Моя місія — допомагати людям знаходити ясність, 
+        контроль і спокій у світі, де цього так не вистачає.
+      </p>
+      <p class="about__text">
+        Ми створюємо системи, які реально працюють, щоб кожен міг:
+      </p>
+      <ul class="about__list">
+        <li>прибрати хаос у голові</li>
+        <li>перестати боротися з собою</li>
+        <li>повернути відчуття контролю</li>
+        <li>почати діяти, а не просто мріяти</li>
+      </ul>
+      <p class="about__text" style="margin-top: 16px;">
+        Ми прямуємо до <strong>покращення життів інших людей</strong>, допомагаючи їм стати 
+        кращою версією себе. Кожен продукт — це крок до змін.
+      </p>
+    </div>
+  </div>
+</section>
 
-    <!-- БЛОК 2: ПРОДУКТИ -->
-    <section id="products" class="section products">
-      <div class="container">
-        <h2 class="section-title">Наші <span class="highlight">продукти</span></h2>
-        <div class="products__grid" id="productsGrid">
-          <!-- Картки рендеряться через JS -->
-        </div>
-      </div>
-    </section>
+   <!-- БЛОК 2: ПРОДУКТИ -->
+<section id="products" class="section products">
+  <div class="container">
+    <h2 class="section-title">Наші <span class="highlight">продукти</span></h2>
+    <div class="products__grid" id="productsGrid">
+      <!-- Картки рендеряться через JS -->
+    </div>
+  </div>
+</section>
 
     <!-- БЛОК 3: ВІДГУКИ -->
     <section id="reviews" class="section reviews">
@@ -72,7 +98,60 @@
         </div>
       </div>
     </section>
+    <!-- БЛОК 4: УМОВИ ОПЛАТИ ТА ПОВЕРНЕННЯ -->
+<section id="terms" class="section terms">
+  <div class="container">
+    <h2 class="section-title">Умови оплати та <span class="highlight">повернення</span></h2>
+    
+    <div class="terms__grid">
+      <div class="terms__card">
+        <div class="terms__icon">💳</div>
+        <h3 class="terms__title">Оплата</h3>
+        <ul class="terms__list">
+          <li>• Оплата здійснюється через Telegram</li>
+          <li>• Після оплати ви отримуєте доступ до матеріалу</li>
+          <li>• Всі ціни вказані в гривнях (₴)</li>
+        </ul>
+      </div>
+
+      <div class="terms__card">
+        <div class="terms__icon">📦</div>
+        <h3 class="terms__title">Доставка</h3>
+        <ul class="terms__list">
+          <li>• Всі продукти – цифрові</li>
+          <li>• Доставка миттєва після оплати</li>
+          <li>• Матеріали надсилаються в Telegram</li>
+        </ul>
+      </div>
+
+      <div class="terms__card">
+        <div class="terms__icon">🔄</div>
+        <h3 class="terms__title">Повернення</h3>
+        <ul class="terms__list">
+          <li>• Повернення коштів</li>
+          <li>• Якщо матеріал не приніс НІЯКОЇ користі</li>
+          
+        </ul>
+      </div>
+
+      <div class="terms__card">
+        <div class="terms__icon">🔒</div>
+        <h3 class="terms__title">Конфіденційність</h3>
+        <ul class="terms__list">
+          <li>• Ваші дані захищені</li>
+          <li>• Інформація не передається третім особам</li>
+          <li>• Використовується тільки для зв'язку</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="terms__footer">
+      <p>📌 Якщо у вас виникли питання – напишіть мені в <a href="https://t.me/your_username" target="_blank" class="terms__tg-link">Telegram</a></p>
+    </div>
+  </div>
+</section>
   </main>
+
 
   <!-- ПІДВАЛ -->
   <footer class="footer">

@@ -2,14 +2,16 @@ const express = require('express');
 const path = require('path');
 
 const app = express();
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
+// Віддача статики
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Всі інші запити — віддаємо index.html (SPA)
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 app.listen(PORT, () => {
-  console.log(`🚀 VITRIX працює на http://localhost:${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });

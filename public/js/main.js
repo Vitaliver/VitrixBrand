@@ -3,7 +3,7 @@ const products = [
   {
     id: 1,
     name: 'PLAN_X',
-    tag: '🔥 Хіт',
+    tag: '🔥 ХІТ',
     shortDesc: '15 помилок планування, які змінюють гру.',
     fullDesc: `
       <p>Я зібрав <strong>15 помилок і фішок планування</strong>, які реально змінили мій підхід до часу за останні 5 років.</p>
@@ -18,12 +18,12 @@ const products = [
       <p>⚠️ Багато людей витрачають роки, щоб зрозуміти ці речі. Ти можеш отримати це за 10 хвилин читання.</p>
     `,
     price: '250 грн',
-    image: '📋' // або 'img/plan_x.jpg'
+    image: 'img/plan_x.png'
   },
   {
     id: 2,
     name: 'CONTROL_X',
-    tag: '⚡ Система',
+    tag: '⚡ СИСТЕМА',
     shortDesc: 'Як перебудувати звички без боротьби з собою.',
     fullDesc: `
       <p>Я зібрав систему <strong>CONTROL_X</strong>, яка допомагає зрозуміти і перебудувати свої звички так, щоб ти почав діяти стабільно без постійної боротьби з собою.</p>
@@ -36,15 +36,15 @@ const products = [
         <li>✔️ як побудувати систему з 3 правил, яка тримає тебе в русі кожен день</li>
       </ul>
       <p>Проста система, яка змінює твою поведінку через умови, а не через силу волі.</p>
-      <p>🚫 Більшість людей роками намагаються “взяти себе в руки”, але причина завжди одна і та сама – неправильна система звичок. Це можна виправити набагато швидше, якщо зрозуміти як це працює насправді.</p>
+      <p>🚫 Більшість людей роками намагаються "взяти себе в руки", але причина завжди одна і та сама – неправильна система звичок. Це можна виправити набагато швидше, якщо зрозуміти як це працює насправді.</p>
     `,
     price: '100 грн',
-    image: '🎯'
+    image: 'img/control_x.png'
   },
   {
     id: 3,
     name: 'RESET_X',
-    tag: '🧠 Відновлення',
+    tag: '🧠 ВІДНОВЛЕННЯ',
     shortDesc: 'Вихід зі стресу та втрати контролю.',
     fullDesc: `
       <p>Я зібрав систему <strong>RESET_X</strong>, яка допомагає вийти зі стану постійного стресу, тривоги і втрати контролю, в якому зараз живе більшість людей.</p>
@@ -52,20 +52,20 @@ const products = [
       <ul>
         <li>➕ чому ти постійно в напрузі навіть коли навколо тихо</li>
         <li>➕ що відбувається з твоєю психікою і тілом під час війни</li>
-        <li>➕ чому зникає мотивація і здається, що ти “зламався”</li>
+        <li>➕ чому зникає мотивація і здається, що ти "зламався"</li>
         <li>➕ як повернути відчуття контролю, навіть коли повна невизначеність</li>
         <li>➕ як поступово відновити енергію і нормальний стан</li>
       </ul>
-      <p>Це не мотивація і не “поради з інтернету”. Це чітке пояснення + система дій, яку можна одразу застосувати.</p>
+      <p>Це не мотивація і не "поради з інтернету". Це чітке пояснення + система дій, яку можна одразу застосувати.</p>
       <p>⚠️ Більшість людей роками живуть у цьому стані і не розуміють, що з ними відбувається. Ти можеш розібратись у цьому за короткий час і почати змінювати свій стан.</p>
     `,
     price: '150 грн',
-    image: '🧘'
+    image: 'img/reset_x.png'
   },
   {
     id: 4,
     name: 'MASK_X',
-    tag: '🚀 Скоро',
+    tag: '🚀 СКОРО',
     shortDesc: 'Новий продукт – стежте за анонсами!',
     fullDesc: `
       <p><strong>MASK_X</strong> – це щось особливе.</p>
@@ -73,7 +73,7 @@ const products = [
       <p>✨ Підпишись на Telegram-канал, щоб не пропустити реліз.</p>
     `,
     price: 'Ціна не сформована',
-    image: '❓',
+    image: 'img/mask_x.png',
     isSoon: true
   }
 ];
@@ -113,22 +113,31 @@ function renderProducts() {
   products.forEach(p => {
     const card = document.createElement('div');
     card.className = 'product-card fade-up';
+    
+    let tagText = p.tag;
+    if (p.isSoon) {
+      tagText = '🚀 Скоро';
+    }
+    
     card.innerHTML = `
-      <div class="product-card__image">
-        ${p.image && p.image.startsWith('<') ? p.image : `<span style="font-size:64px;">${p.image || '📦'}</span>`}
+      <div class="product-card__icon">
+        <span class="product-card__icon-emoji">${p.icon || '📦'}</span>
       </div>
-      <div class="product-card__tag ${p.isSoon ? 'soon' : ''}">${p.tag}</div>
-      <h3 class="product-card__title">${p.name}</h3>
-      <p class="product-card__description">${p.shortDesc}</p>
-      <div class="product-card__price ${p.isSoon ? 'soon-price' : ''}">${p.price}</div>
-      <button class="product-card__btn" data-id="${p.id}" ${p.isSoon ? 'disabled' : ''}>
-        ${p.isSoon ? 'Скоро' : 'Деталі'}
-      </button>
+      <div class="product-card__content">
+        <div class="product-card__tag ${p.isSoon ? 'soon' : ''}">${tagText}</div>
+        <h3 class="product-card__title">${p.name}</h3>
+        <p class="product-card__description">${p.shortDesc}</p>
+        <div class="product-card__price ${p.isSoon ? 'soon-price' : ''}">${p.price}</div>
+        <div class="product-card__btn-wrapper">
+          <button class="product-card__btn" data-id="${p.id}" ${p.isSoon ? 'disabled' : ''}>
+            ${p.isSoon ? 'Скоро' : 'Деталі →'}
+          </button>
+        </div>
+      </div>
     `;
     productsGrid.appendChild(card);
   });
 
-  // Підписка на кнопки "Деталі"
   document.querySelectorAll('.product-card__btn:not([disabled])').forEach(btn => {
     btn.addEventListener('click', (e) => {
       const id = parseInt(e.target.dataset.id);
@@ -171,8 +180,14 @@ const modal = document.getElementById('productModal');
 const modalBody = document.getElementById('modalBody');
 const modalClose = document.getElementById('modalClose');
 
+let savedScrollY = 0; // зберігаємо позицію скролу
+
 function openModal(product) {
   const isSoon = product.isSoon || false;
+  
+  // ЗАПАМ'ЯТОВУЄМО ПОТОЧНУ ПОЗИЦІЮ
+  savedScrollY = window.scrollY;
+  
   modalBody.innerHTML = `
     <h3>${product.name}</h3>
     ${product.fullDesc}
@@ -181,6 +196,7 @@ function openModal(product) {
       ${isSoon ? '🚀 Скоро' : '📲 Замовити в Telegram'}
     </button>
   `;
+  
   modal.classList.add('active');
   document.body.style.overflow = 'hidden';
 
@@ -195,16 +211,23 @@ function openModal(product) {
 function closeModal() {
   modal.classList.remove('active');
   document.body.style.overflow = '';
+  
+  // ПОВЕРТАЄМОСЯ НА ЗБЕРЕЖЕНУ ПОЗИЦІЮ
+  window.scrollTo(0, savedScrollY);
 }
 
+// Закриття по кнопці "×"
 modalClose.addEventListener('click', closeModal);
+
+// Закриття по кліку на фон
 modal.addEventListener('click', (e) => {
   if (e.target === modal) closeModal();
 });
+
+// Закриття по Escape
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closeModal();
 });
-
 // ===== АНІМАЦІЯ ПРИ СКРОЛІ =====
 function initScrollAnimations() {
   const elements = document.querySelectorAll('.fade-up');
@@ -235,3 +258,45 @@ document.addEventListener('DOMContentLoaded', () => {
   // Повторна ініціалізація для нових елементів
   setTimeout(initScrollAnimations, 150);
 });
+
+// Додаткова безпека – якщо модалка закрилась, але скрол не відновився
+document.addEventListener('click', (e) => {
+  // Якщо клікнули поза модалкою і вона активна – закриваємо
+  if (modal.classList.contains('active') && e.target === modal) {
+    closeModal();
+  }
+});
+
+// Якщо користувач натиснув назад у браузері – закриваємо модалку
+window.addEventListener('popstate', () => {
+  if (modal.classList.contains('active')) {
+    closeModal();
+  }
+});
+
+// ===== АКТИВНИЙ РОЗДІЛ У ХЕДЕРІ =====
+const sections = document.querySelectorAll('.section');
+const navLinks = document.querySelectorAll('.nav__link');
+
+function updateActiveLink() {
+  let current = '';
+  const scrollY = window.scrollY + 120;
+
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop;
+    const sectionHeight = section.offsetHeight;
+    if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+      current = section.getAttribute('id');
+    }
+  });
+
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === `#${current}`) {
+      link.classList.add('active');
+    }
+  });
+}
+
+window.addEventListener('scroll', updateActiveLink);
+window.addEventListener('load', updateActiveLink);
