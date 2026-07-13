@@ -1,0 +1,13 @@
+{
+  "name": "vitrix-brand",
+  "version": "1.0.0",
+  "description": "Односторінковий сайт бренду VITRIX",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "node app.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>VITRIX — Інфопродукти</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Шум (фіолетовий гранж) -->
+  <div class="noise-overlay"></div>
+
+  <!-- ХЕДЕР -->
+  <header class="header">
+    <div class="container header__inner">
+      <div class="logo">VITRIX</div>
+      <nav class="nav">
+        <a href="#about" class="nav__link">Про мене</a>
+        <a href="#products" class="nav__link">Продукти</a>
+        <a href="#reviews" class="nav__link">Відгуки</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- БЛОК 1: ПРО МЕНЕ -->
+    <section id="about" class="section about">
+      <div class="container about__inner">
+        <div class="about__image">
+          <!-- Замініть src на своє фото або використовуйте іконку -->
+          <img src="img/about.jpg" alt="Засновник VITRIX" onerror="this.style.display='none'">
+          <!-- Якщо фото немає, буде сірий фон – можна додати емодзі як fallback -->
+        </div>
+        <div class="about__content">
+          <h2 class="section-title">Привіт, я <span class="highlight">Засновник</span></h2>
+          <p class="about__text">
+            Мене звати <strong>Артем</strong>, і я створив <strong>VITRIX</strong> – систему інфопродуктів, які змінюють підхід до планування, звичок та відновлення.
+          </p>
+          <p class="about__text">
+            Моя місія – допомогти тобі прибрати хаос у голові, почати діяти і повернути контроль над своїм життям.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- БЛОК 2: ПРОДУКТИ -->
+    <section id="products" class="section products">
+      <div class="container">
+        <h2 class="section-title">Наші <span class="highlight">продукти</span></h2>
+        <div class="products__grid" id="productsGrid">
+          <!-- Картки рендеряться через JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- БЛОК 3: ВІДГУКИ -->
+    <section id="reviews" class="section reviews">
+      <div class="container">
+        <h2 class="section-title">Що кажуть <span class="highlight">клієнти</span></h2>
+
+        <!-- Відгуки з Telegram -->
+        <div class="reviews__telegram">
+          <p class="telegram__text">💬 Більше відгуків у нашому <strong>Telegram-каналі</strong></p>
+          <a href="https://t.me/your_channel" target="_blank" class="telegram__btn">Підписатися на канал</a>
+        </div>
+
+        <!-- Відгуки на сайті (динамічні) -->
+        <div class="reviews__grid" id="reviewsGrid">
+          <!-- Тут JS вставить картки відгуків -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ПІДВАЛ -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>© 2026 VITRIX. Всі права захищено.</p>
+      <div class="footer__contacts">
+        <span>📲 Зв'язок:</span>
+        <a href="https://t.me/your_username" target="_blank" class="footer__tg">Telegram</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- МОДАЛКА (Деталі продукту) -->
+  <div class="modal" id="productModal">
+    <div class="modal__content">
+      <button class="modal__close" id="modalClose">&times;</button>
+      <div class="modal__body" id="modalBody">
+        <!-- Контент підставляється з JS -->
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
