@@ -18,7 +18,7 @@ const products = [
       <p>⚠️ Багато людей витрачають роки, щоб зрозуміти ці речі. Ти можеш отримати це за 10 хвилин читання.</p>
     `,
     price: '250 грн',
-    image: 'img/plan_x.png'
+    image: 'img/plan.png'
   },
   {
     id: 2,
@@ -39,7 +39,7 @@ const products = [
       <p>🚫 Більшість людей роками намагаються "взяти себе в руки", але причина завжди одна і та сама – неправильна система звичок. Це можна виправити набагато швидше, якщо зрозуміти як це працює насправді.</p>
     `,
     price: '100 грн',
-    image: 'img/control_x.png'
+    image: 'img/control.png'
   },
   {
     id: 3,
@@ -60,7 +60,7 @@ const products = [
       <p>⚠️ Більшість людей роками живуть у цьому стані і не розуміють, що з ними відбувається. Ти можеш розібратись у цьому за короткий час і почати змінювати свій стан.</p>
     `,
     price: '150 грн',
-    image: 'img/reset_x.png'
+    image: 'img/reset.png'
   },
   {
     id: 4,
@@ -73,7 +73,7 @@ const products = [
       <p>✨ Підпишись на Telegram-канал, щоб не пропустити реліз.</p>
     `,
     price: 'Ціна не сформована',
-    image: 'img/mask_x.png',
+    image: 'img/mask.png',
     isSoon: true
   }
 ];
@@ -120,8 +120,9 @@ function renderProducts() {
     }
     
     card.innerHTML = `
-      <div class="product-card__icon">
-        <span class="product-card__icon-emoji">${p.icon || '📦'}</span>
+      <div class="product-card__image">
+        <img src="${p.image}" alt="${p.name}" loading="lazy">
+        <div class="product-card__image-overlay"></div>
       </div>
       <div class="product-card__content">
         <div class="product-card__tag ${p.isSoon ? 'soon' : ''}">${tagText}</div>
@@ -138,6 +139,7 @@ function renderProducts() {
     productsGrid.appendChild(card);
   });
 
+  // Підписка на кнопки
   document.querySelectorAll('.product-card__btn:not([disabled])').forEach(btn => {
     btn.addEventListener('click', (e) => {
       const id = parseInt(e.target.dataset.id);
