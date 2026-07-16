@@ -17,7 +17,8 @@ const products = [
       <p>Це обширний і максимально концентрований матеріал, без води.</p>
       <p>⚠️ Багато людей витрачають роки, щоб зрозуміти ці речі. Ти можеш отримати це за 10 хвилин читання.</p>
     `,
-    price: '250 грн',
+    price: '250 грн',        // ← основна ціна
+    priceCrypto: '≈ 7$',
     image: 'img/plan.png'
   },
   {
@@ -38,7 +39,8 @@ const products = [
       <p>Проста система, яка змінює твою поведінку через умови, а не через силу волі.</p>
       <p>🚫 Більшість людей роками намагаються "взяти себе в руки", але причина завжди одна і та сама – неправильна система звичок. Це можна виправити набагато швидше, якщо зрозуміти як це працює насправді.</p>
     `,
-    price: '100 грн',
+    price: '100 грн',        // ← основна ціна
+    priceCrypto: '≈ 3$',
     image: 'img/control.png'
   },
   {
@@ -59,7 +61,8 @@ const products = [
       <p>Це не мотивація і не "поради з інтернету". Це чітке пояснення + система дій, яку можна одразу застосувати.</p>
       <p>⚠️ Більшість людей роками живуть у цьому стані і не розуміють, що з ними відбувається. Ти можеш розібратись у цьому за короткий час і почати змінювати свій стан.</p>
     `,
-    price: '150 грн',
+    price: '150 грн',        // ← основна ціна
+    priceCrypto: '≈ 4$',
     image: 'img/reset.png'
   },
   {
@@ -120,22 +123,25 @@ function renderProducts() {
     }
     
     card.innerHTML = `
-      <div class="product-card__image">
-        <img src="${p.image}" alt="${p.name}" loading="lazy">
-        <div class="product-card__image-overlay"></div>
-      </div>
-      <div class="product-card__content">
-        <div class="product-card__tag ${p.isSoon ? 'soon' : ''}">${tagText}</div>
-        <h3 class="product-card__title">${p.name}</h3>
-        <p class="product-card__description">${p.shortDesc}</p>
-        <div class="product-card__price ${p.isSoon ? 'soon-price' : ''}">${p.price}</div>
-        <div class="product-card__btn-wrapper">
-          <button class="product-card__btn" data-id="${p.id}" ${p.isSoon ? 'disabled' : ''}>
-            ${p.isSoon ? 'Скоро' : 'Деталі →'}
-          </button>
-        </div>
-      </div>
-    `;
+  <div class="product-card__image">
+    <img src="${p.image}" alt="${p.name}" loading="lazy">
+    <div class="product-card__image-overlay"></div>
+  </div>
+  <div class="product-card__content">
+    <div class="product-card__tag ${p.isSoon ? 'soon' : ''}">${tagText}</div>
+    <h3 class="product-card__title">${p.name}</h3>
+    <p class="product-card__description">${p.shortDesc}</p>
+    <div class="product-card__price ${p.isSoon ? 'soon-price' : ''}">
+      <span class="product-card__price-main">${p.price}</span>
+      ${p.priceCrypto ? `<span class="product-card__price-crypto">${p.priceCrypto}</span>` : ''}
+    </div>
+    <div class="product-card__btn-wrapper">
+      <button class="product-card__btn" data-id="${p.id}" ${p.isSoon ? 'disabled' : ''}>
+        ${p.isSoon ? 'Скоро' : 'Деталі →'}
+      </button>
+    </div>
+  </div>
+`;
     productsGrid.appendChild(card);
   });
 
@@ -148,7 +154,6 @@ function renderProducts() {
     });
   });
 }
-
 // ===== РЕНДЕР ВІДГУКІВ =====
 const reviewsGrid = document.getElementById('reviewsGrid');
 
@@ -193,7 +198,10 @@ function openModal(product) {
   modalBody.innerHTML = `
     <h3>${product.name}</h3>
     ${product.fullDesc}
-    <div class="price">${product.price}</div>
+    <div class="price">
+      <span class="price-main">${product.price}</span>
+      ${product.priceCrypto ? `<span class="price-crypto">${product.priceCrypto}</span>` : ''}
+    </div>
     <button class="modal__order-btn" ${isSoon ? 'disabled' : ''}>
       ${isSoon ? '🚀 Скоро' : '📲 Замовити в Telegram'}
     </button>
